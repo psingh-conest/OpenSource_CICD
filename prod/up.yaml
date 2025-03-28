@@ -1,11 +1,25 @@
 ---
 - hosts: localhost
   tasks:
-  - name: "Install kubernetes python package"
-    pip:
-      name: kubernetes
-      state: present
-  - name: install mysql
-    kubernetes.core.k8s:
-      state: present
-      src: mysql.yaml
+    - name: "Install Kubernetes Python package"
+      pip:
+        name: kubernetes
+        state: present
+    - name: Add Gitea Helm chart repository
+      kubernetes.core.helm_repository:
+        name: gitea-charts
+        repo_url: "https://dl.gitea.com/charts/"
+
+    - name: Install MySQL
+      kubernetes.core.k8s:
+        state: present
+        src: mysql.yaml
+        
+    - name: Deploy Gitea using Helm and MySQL
+      kubernetes.core.helm:
+        name: gitea
+        chart_ref: gitea-charts/gitea
+        release_namespace: default
+        values_files:
+          - values.yaml
+

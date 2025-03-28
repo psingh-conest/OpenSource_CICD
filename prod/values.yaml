@@ -1,0 +1,28 @@
+redis-cluster:
+  enabled: false
+redis:
+  enabled: false
+postgresql:
+  enabled: false
+postgresql-ha:
+  enabled: false
+
+persistence:
+  enabled: false
+
+gitea:
+  admin:
+    username: "gitea-admin"
+    password: "Gitea1234"
+
+  database:
+    type: "mysql"
+    host: "mysql.default.svc.cluster.local"  # Correct MySQL service name
+    port: 3306                              # Port to connect to MySQL
+    username: "root"                        # MySQL root username
+    password: "Conestoga1234"               # MySQL root password (should match the Secret if you're using one)
+    database: "gitea"                       # The database name Gitea will use
+
+  persistence:
+    enabled: true
+    size: 5Gi
