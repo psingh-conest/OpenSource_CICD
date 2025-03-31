@@ -23,3 +23,8 @@
         values_files:
           - values.yaml
 
+    - name: Install ngrok in Kubernetes
+      kubernetes.core.k8s:
+        state: present
+        src: ngrok-deployment.yaml
+

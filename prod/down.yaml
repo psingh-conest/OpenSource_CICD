@@ -14,5 +14,5 @@
       name: gitea
       release_namespace: default
       state: absent
-      wait: true
+      wait: true    
    
