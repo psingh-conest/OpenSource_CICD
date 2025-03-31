@@ -19,12 +19,8 @@ spec:
           env:
             - name: NGROK_AUTHTOKEN
               value: "2uBsBwvLomoUpxKuEtiuA2Wor5v_3KaJcvk9UP382Pcs5w1T5"  # Replace with your actual Ngrok authtoken
-          command: 
-            - "ngrok"
-            - "http"
-            - "gitea.default.svc.cluster.local:3000"              
-          ports:
-            - containerPort: 4040
+            - name: NGROK_TUNNEL
+              value: "gitea-http:3000"  # Tunneling to gitea-http service on port 3000
 ---
 apiVersion: v1
 kind: Service
@@ -38,4 +34,4 @@ spec:
     - protocol: TCP
       port: 4040
       targetPort: 4040
-  type: ClusterIP            
+  type: ClusterIP
