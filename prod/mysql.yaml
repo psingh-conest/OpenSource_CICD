@@ -53,12 +53,14 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.6
+      - image: mysql:5.7
         name: mysql
         env:
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
           value: Conestoga1234
+        - name: MYSQL_DATABASE
+          value: "gitea"  
         ports:
         - containerPort: 3306
           name: mysql
