@@ -35,3 +35,5 @@ spec:
       port: 4040
       targetPort: 4040
   type: ClusterIP
+
+  # ngrok link https://3a65-20-42-11-24.ngrok-free.app/
